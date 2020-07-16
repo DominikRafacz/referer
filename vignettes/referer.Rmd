@@ -1,0 +1,47 @@
+---
+title: "referer"
+output: rmarkdown::html_vignette
+vignette: >
+  %\VignetteIndexEntry{referer}
+  %\VignetteEngine{knitr::rmarkdown}
+  %\VignetteEncoding{UTF-8}
+---
+
+```{r, include = FALSE}
+knitr::opts_chunk$set(
+  collapse = TRUE,
+  comment = "#>",
+  cache = FALSE
+)
+```
+
+# Reference magic!
+
+```{r setup}
+library(referer)
+```
+
+```{r ref}
+
+x <- c(1, 2, 3)
+
+do_sth <- function(some_object) {
+  #let's do something with some object!
+  mod(some_object, some_object[1] <- 100)
+  mod(some_object, some_object[2] <- some_object[1] * some_object[3])
+  mod(some_object, some_object[3] <- log(some_object[3]))
+  
+  #and then return it!
+  mod(some_object)
+}
+
+
+do_sth(x) #won't change x
+
+x
+
+do_sth(ref(x)) #will change x
+
+x 
+
+```
