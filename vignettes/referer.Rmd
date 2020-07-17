@@ -25,23 +25,12 @@ library(referer)
 
 x <- c(1, 2, 3)
 
-do_sth <- function(some_object) {
-  #let's do something with some object!
-  mod(some_object, some_object[1] <- 100)
-  mod(some_object, some_object[2] <- some_object[1] * some_object[3])
-  mod(some_object, some_object[3] <- log(some_object[3]))
-  
-  #and then return it!
-  mod(some_object)
-}
+y <- ref(x)
 
-
-do_sth(x) #won't change x
+y
 
 x
 
-do_sth(ref(x)) #will change x
-
-x 
+val(y)
 
 ```
